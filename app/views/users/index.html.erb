@@ -10,6 +10,6 @@
   <% end %>
 
   <h3>Don't have an account? Sign up here!</h3>
-  <%= button_to 'Create Account', sign_up_path %>
+  <%= button_to 'Create Account', {:controller => 'users', :action => 'new'}, method: :get %>
 
 </div>

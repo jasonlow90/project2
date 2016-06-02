@@ -8,8 +8,9 @@
   <p>Favourite countries: <%= current_user.profile.favourite_countries %></p>
   <p>Bucket list: <%= current_user.profile.bucket_list %></p>
   <p>Looking for travel buddy? <%=current_user.profile.travel_buddy %></p>
-
+<%= button_to "Edit Profile", {:controller => "profiles", :action => "edit"}, method: :get %>
+<%= button_to "Delete My Profile", {:controller => "profiles", :action => "destroy"}, method: :delete, data: { confirm: "Are you sure?"}%>
+<%= button_to "Log Out", {:controller => 'sessions', :action => 'destroy'}, method: :get %>
 
 </div>
 <%= button_to "Search Country's Profile", {:controller => "profiles", :action => "search"}, method: :get %>
-<%= button_to "Log Out", {:controller => 'sessions', :action => 'destroy'}, method: :get %>

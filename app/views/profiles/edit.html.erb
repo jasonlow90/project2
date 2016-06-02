@@ -1,0 +1,10 @@
+<h1>Editing <%= current_user.profile.name %></h1>
+
+<%= form_for current_user.profile, url: '/profiles/update', method: :patch do |f| %>
+  Name: <%= f.text_field :name %> <br/>
+  Countries visited: <%= f.text_field :countries_visited %> <br/>
+  Favourite countries: <%= f.text_field :favourite_countries %> <br/>
+  Bucket list: <%= f.text_field :bucket_list %> <br/>
+  Looking for travel buddy? <%= f.check_box :travel_buddy %> <br/>
+  <%= f.submit 'Edit My Profile' %>
+<% end %>
