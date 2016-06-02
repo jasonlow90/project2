@@ -2,13 +2,15 @@ class UsersController < ApplicationController
 
   # Index page '/'
   def home
-    @users = User.new
   end
 
   def edit
 
   end
 
+  def new
+
+  end
 
   def create
     @user = User.new(user_params)

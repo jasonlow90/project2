@@ -1,28 +1,15 @@
 <h1>Welcome to Travel Note!</h1>
+<p>Hi <%= current_user.name.capitalize %>! You're logged in!</p>
 
-<p>
-  Hi <%= current_user.name.capitalize %>! You're logged in!
-</p>
+<div class="user-profile">
+  <h3>Profile: </h3>
+  <p>Name: <%= current_user.profile.name%></p>
+  <p>Countries visited: <%= current_user.profile.countries_visited %></p>
+  <p>Favourite countries: <%= current_user.profile.favourite_countries %></p>
+  <p>Bucket list: <%= current_user.profile.bucket_list %></p>
+  <p>Looking for travel buddy? <%=current_user.profile.travel_buddy %></p>
 
-<div class="travel-api">
-  <p>Country: <%= @response["names"]["name"] %></p>
-  <p>Languages: <%= @response["language"][0]["language"] %></p>
-  <p>Voltage: <%= @response["electricity"]["voltage"] %> Volt</p>
-  <p>Frequency: <%= @response["electricity"]["frequency"] %> Hz</p>
-
-  <p>Emergency contacts: <%= @response["telephone"].values %></p>
-  <p>Water: The tap water is <%= @response["water"]["short"]%> for consumption.</p>
-  <p>Currency: <%= @response["currency"]["name"] %> <%= @response["currency"]["rate"] %><textarea name="currency" rows="2" cols="10"></textarea></p>
-  <p>
-    Vaccination:
-    <% if @response["vaccinations"] == [] %>
-      <p>This country doesn't require any vaccination</p>
-    <% else %>
-      <%= @response["vaccinations"] %>
-    <% end %>
-  </p>
-  <p>Travel Advise: <%= @response["advise"]["UA"]["advise"] %>. Please visit <a href="<%= @response["advise"]["UA"]["url"] %>">here</a> for more information.</p>
 
 </div>
-
+<%= button_to "Search Country's Profile", {:controller => "travelnote", :action => "search"}, method: :get %>
 <%= button_to "Log Out", {:controller => 'sessions', :action => 'destroy'}, method: :get %>

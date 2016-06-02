@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
 
   get '/travelnote' => 'travelnote#index'
+  get '/travelnote/new' => 'travelnote#new'
+  post '/travelnote/new' => 'travelnote#create'
+
+  get '/travelnote/search' => 'travelnote#search'
 
   # resource :users
 
