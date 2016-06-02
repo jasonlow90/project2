@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  countries_visited: MyString
+  favourite_countries: MyString
+  bucket_list: MyString
+  travel_buddy: MyString
+
+two:
+  name: MyString
+  countries_visited: MyString
+  favourite_countries: MyString
+  bucket_list: MyString
+  travel_buddy: MyString
