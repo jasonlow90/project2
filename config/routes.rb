@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   root 'users#index'
 
-  get '/login' => 'sessions#new'
+  # get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
-  delete '/login' => 'sessions#destroy'
+  get '/' => 'sessions#destroy'
 
   get '/sign_up' => 'users#new'
   post '/users' => 'users#create'
+
+  get '/travelnote' => 'travelnote#index'
 
   # resource :users
 

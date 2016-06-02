@@ -3,13 +3,18 @@
   <h3>Login</h3>
   <%= form_tag '/login' do %>
 
-    Email: <%= text_field_tag :email %>
-    Password: <%= text_field_tag :password %>
-    <%= submit_tag "Submit" %>
+    Email: <%= text_field_tag :email %> <br/>
+    Password: <%= password_field_tag :password %> <br/>
+    <%= submit_tag "Log In" %>
 
   <% end %>
 
   <h3>Sign Up</h3>
   <%= link_to 'Create Account', sign_up_path %>
+
+  <p>
+
+    <%= session.inspect%>
+  </p>
 
 </div>
