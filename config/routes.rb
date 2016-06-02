@@ -1,20 +1,22 @@
 Rails.application.routes.draw do
   root 'users#index'
 
-  # get '/login' => 'sessions#new'
+  # Log in user account
   post '/login' => 'sessions#create'
   get '/' => 'sessions#destroy'
 
+  # Create user account
   get '/sign_up' => 'users#new'
   post '/users' => 'users#create'
 
-  get '/travelnote' => 'travelnote#index'
-  get '/travelnote/new' => 'travelnote#new'
-  post '/travelnote/new' => 'travelnote#create'
+  # Create user profile
+  get '/profiles' => 'profiles#index'
+  get '/profiles/new' => 'profiles#new'
+  post '/profiles/new' => 'profiles#create'
 
-  get '/travelnote/search' => 'travelnote#search'
+  # Directing user to travel api to search for country profiles
+  get '/profiles/search' => 'profiles#search'
 
-  # resource :users
 
 
   # The priority is based upon order of creation: first created -> highest priority.
