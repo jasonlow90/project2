@@ -15,4 +15,12 @@ class DestinationsController < ApplicationController
     redirect_to '/profiles'
   end
 
+  def show
+    @response = HTTParty.get("https://travelbriefing.org/#{params[:searchterm]}?format=json",
+      :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'})
+
+    @response = JSON.parse(@response.parsed_response)
+
+  end
+
 end

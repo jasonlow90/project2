@@ -1,0 +1,35 @@
+
+<div class="travel-api">
+
+  <p>Country: <%= @response["names"]["name"] %></p>
+  <p>Languages: <%= @response["language"][0]["language"] %></p>
+  <p>Voltage: <%= @response["electricity"]["voltage"] %> Volt</p>
+  <p>Frequency: <%= @response["electricity"]["frequency"] %> Hz</p>
+  <p>Emergency contacts:</p>
+    <% @response["telephone"].each do |type | %>
+  <p> <%= type[0] %>: <%= type[1] %></p>
+    <% end %>
+  <p>Water: The tap water is <%= @response["water"]["short"]%> for consumption.</p>
+  <p>Currency: <%= @response["currency"]["name"] %> <%= @response["currency"]["rate"] %> to USD</p>
+  <p>
+    Vaccination:
+    <% if @response["vaccinations"] == [] %>
+      <p>This country doesn't require any vaccination</p>
+    <% else %>
+      <%= @response["vaccinations"] %>
+    <% end %>
+  </p>
+
+</div>
+
+<div class="message-board">
+  <h3>Message Board:</h3>
+  <div class="posts">
+    <form action="/messages/create" method= "POST">
+      <input type="text" name="message">
+      <button type="submit">Create a message</button>
+    </form>
+
+  </div>
+</div>
+<%= button_to 'Back to My Profile', {:controller => "profiles", :action => "index"}, method: :get %>

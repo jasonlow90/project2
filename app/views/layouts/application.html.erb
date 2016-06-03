@@ -24,7 +24,10 @@
   <div class="my-destination">
     <h3>My Destinations</h3>
     <% current_user.destinations.each do |x|%>
-    <p><%= x.country%></p>
+    <form action="/destinations/show" method= "GET">
+      <input type="text" name="searchterm" value=<%= x.country %>>
+      <button type="submit">Enter Me</button>
+    </form>
     <% end %>
     <hr>
   <% end %>
