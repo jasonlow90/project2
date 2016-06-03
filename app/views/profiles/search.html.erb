@@ -7,7 +7,7 @@
 
   <p>Emergency contacts: <%= @response["telephone"].values %></p>
   <p>Water: The tap water is <%= @response["water"]["short"]%> for consumption.</p>
-  <p>Currency: <%= @response["currency"]["name"] %> <%= @response["currency"]["rate"] %><textarea name="currency" rows="2" cols="10"></textarea></p>
+  <p>Currency: <%= @response["currency"]["name"] %> <%= @response["currency"]["rate"] %> to USD</p>
   <p>
     Vaccination:
     <% if @response["vaccinations"] == [] %>
@@ -16,7 +16,7 @@
       <%= @response["vaccinations"] %>
     <% end %>
   </p>
-  <p>Travel Advise: <%= @response["advise"]["UA"]["advise"] %>. Please visit <a href="<%= @response["advise"]["UA"]["url"] %>">here</a> for more information.</p>
+
 
 </div>
 

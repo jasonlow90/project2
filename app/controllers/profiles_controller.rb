@@ -36,7 +36,7 @@ class ProfilesController < ApplicationController
 
     #button to link to the travel API
     def search
-      @response = HTTParty.get('https://travelbriefing.org/Thailand?format=json',
+      @response = HTTParty.get("https://travelbriefing.org/#{params[:searchterm]}?format=json",
         :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'})
 
       @response = JSON.parse(@response.parsed_response)

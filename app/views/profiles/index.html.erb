@@ -1,16 +1,7 @@
 <h1>Welcome to Travel Note!</h1>
 <p>Hi <%= current_user.name.capitalize %>! You're logged in!</p>
 
-<div class="user-profile">
-  <h3>Profile: </h3>
-  <p>Name: <%= current_user.profile.name%></p>
-  <p>Countries visited: <%= current_user.profile.countries_visited %></p>
-  <p>Favourite countries: <%= current_user.profile.favourite_countries %></p>
-  <p>Bucket list: <%= current_user.profile.bucket_list %></p>
-  <p>Looking for travel buddy? <%=current_user.profile.travel_buddy %></p>
-<%= button_to "Edit Profile", {:controller => "profiles", :action => "edit"}, method: :get %>
-<%= button_to "Delete My Profile", {:controller => "profiles", :action => "destroy"}, method: :delete, data: { confirm: "Are you sure?"}%>
-<%= button_to "Log Out", {:controller => 'sessions', :action => 'destroy'}, method: :get %>
-
-</div>
-<%= button_to "Search Country's Profile", {:controller => "profiles", :action => "search"}, method: :get %>
+<form action="/profiles/search" method= "GET">
+  <input type="text" id="travel-search" name="searchterm">
+  <button type="submit">Search Country</button>
+</form>

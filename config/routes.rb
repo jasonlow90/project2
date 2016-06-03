@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # Log in user account
   post '/login' => 'sessions#create'
-  get '/' => 'sessions#destroy'
+  get '/123' => 'sessions#destroy'
 
   # Create user account
   get '/sign_up' => 'users#new'
