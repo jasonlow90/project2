@@ -1,11 +1,14 @@
 
 <div class="travel-api">
+
   <p>Country: <%= @response["names"]["name"] %></p>
   <p>Languages: <%= @response["language"][0]["language"] %></p>
   <p>Voltage: <%= @response["electricity"]["voltage"] %> Volt</p>
   <p>Frequency: <%= @response["electricity"]["frequency"] %> Hz</p>
-
-  <p>Emergency contacts: <%= @response["telephone"].values %></p>
+  <p>Emergency contacts:</p>
+    <% @response["telephone"].each do |type | %>
+  <p> <%= type[0] %>: <%= type[1] %></p>
+    <% end %>
   <p>Water: The tap water is <%= @response["water"]["short"]%> for consumption.</p>
   <p>Currency: <%= @response["currency"]["name"] %> <%= @response["currency"]["rate"] %> to USD</p>
   <p>
@@ -17,7 +20,6 @@
     <% end %>
   </p>
 
-
 </div>
-
+<%= button_to 'Save this country as my destination', {:controller => "destinations", :action => "create", :name => @response["names"]["name"]}, method: :post %>
 <%= button_to 'Back to My Profile', {:controller => "profiles", :action => "index"}, method: :get %>

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'destinations/home'
+  post 'destinations/create'
+
   root 'users#index'
 
   # Log in user account
