@@ -24,11 +24,24 @@
 
 <div class="message-board">
   <h3>Message Board:</h3>
-  <div class="posts">
-    <form action="/messages/create" method= "POST">
-      <input type="text" name="message">
-      <button type="submit">Create a message</button>
-    </form>
+  <% if @dest.id == current_user.id %>
+  <% @message.each do |x| %>
+    <% if x.destination.id == @dest.id%>
+      <% if x.user.id == @dest.user.id %>
+      <p><%= x.content %>- posted by: <%= x.user.name%></p>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% end %>
+  <%= @dest.user.id %>
+  </div>
+  <div class="create-post">
+    <%= form_tag '/messages/create' do %>
+      <%= text_field_tag :message %>
+      <%= hidden_field_tag :country, @response["names"]["name"] %>
+      <%= submit_tag 'Send message' %>
+    <% end %>
+
 
   </div>
 </div>

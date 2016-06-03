@@ -3,9 +3,10 @@ class MessagesController < ApplicationController
     message = Message.new
     message.content = params[:message]
     message.user = current_user
-    dest = Destination.find_by_country(country: params[:searchterm])
-    message.destination_id = dest.id
-    redirect_to "/destinations/show?searchterm=#{params[:searchterm]}"
+    dest = Destination.find_by_country(params[:country])
+    message.destination = dest
+    message.save
+    redirect_to "/destinations/show?searchterm=#{params[:country]}"
   end
 
   def edit

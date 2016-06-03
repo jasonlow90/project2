@@ -11,7 +11,11 @@ class DestinationsController < ApplicationController
     destination = Destination.new
     destination.country = @response["names"]["name"]
     destination.user = current_user
-    destination.save
+    # if current_user.destinations.country == destination.country
+    #   flash[:error] = "Destination exist"
+    # else
+      destination.save
+    # end
     redirect_to '/profiles'
   end
 
@@ -20,6 +24,16 @@ class DestinationsController < ApplicationController
       :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'})
 
     @response = JSON.parse(@response.parsed_response)
+
+    @dest = Destination.where(country: params[:searchterm], user_id: current_user.id)[0]
+    # @dest_test = Destination.find_by_country(params[:searchterm])
+    #
+    # if @dest_test.user.id == current_user.id
+    #   @dest = @dest_test
+    # end
+
+    @message = Message.all
+    @destination = Destination.all
 
   end
 

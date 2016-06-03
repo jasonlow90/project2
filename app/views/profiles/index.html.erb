@@ -1,6 +1,8 @@
 <h1>Welcome to Travel Note!</h1>
 <p>Hi <%= current_user.name.capitalize %>! You're logged in!</p>
-
+<% if flash[:error] %>
+<p><%= flash[:error] %></p>
+<% end %>
 <form action="/profiles/search" method= "GET">
   <input type="text" id="travel-search" name="searchterm">
   <button type="submit">Search Country</button>
