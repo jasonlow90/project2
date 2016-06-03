@@ -4,7 +4,10 @@ class ProfilesController < ApplicationController
       # If the user has no profile, redirect them to make a new profile
       if current_user && current_user.profile.nil?
           redirect_to :action => 'new'
+          return
         end
+
+      @destinations = Destination.all
 
     end
 

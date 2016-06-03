@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   delete 'messages/destroy' => 'messages#destroy'
 
   # Destination routes
-  get 'destinations/home'
-  post 'destinations/create'
-  get 'destinations/show'
+  get 'destinations/home' => 'destinations#home'
+  post 'destinations/create' => 'destinations#create'
+  get 'destinations/show' => 'destinations#show'
+  get 'destinations/view' => 'destinations#view'
 
   # Log in user account
   post '/login' => 'sessions#create'

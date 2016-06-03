@@ -7,3 +7,12 @@
   <input type="text" id="travel-search" name="searchterm">
   <button type="submit">Search Country</button>
 </form>
+
+<div class="users-destinations">
+  <h3>Travel buddies board</h3>
+  <% @destinations.each do |x|%>
+  <% if x.user.profile.travel_buddy == true%>
+    <p><%= link_to "#{x.country}", controller: "destinations", action: "view"%> by <%= x.user.name.capitalize %> </p>
+    <% end %>
+  <% end %>
+</div>
