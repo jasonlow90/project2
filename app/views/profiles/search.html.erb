@@ -1,23 +1,30 @@
 
 <div class="travel-api">
 
-  <p>Country: <%= @response["names"]["name"] %></p>
-  <p>Languages: <%= @response["language"][0]["language"] %></p>
-  <p>Voltage: <%= @response["electricity"]["voltage"] %> Volt</p>
-  <p>Frequency: <%= @response["electricity"]["frequency"] %> Hz</p>
-  <p>Temperature: June: <%= @response["weather"]["June"]["tAvg"] %></p>
-  <p>Emergency contacts:</p>
+  <p><b>Country:</b> <%= @response["names"]["name"] %></p>
+  <p><b>Languages:</b> <%= @response["language"][0]["language"] %></p>
+  <p><b>Voltage:</b> <%= @response["electricity"]["voltage"] %> Volt</p>
+  <p><b>Frequency:</b> <%= @response["electricity"]["frequency"] %> Hz</p>
+  <p><b>Average Temperature in June:</b> <%= @response["weather"]["June"]["tAvg"] %> degree Celsius</p>
+  <p><b>Emergency contacts:</b></p>
     <% @response["telephone"].each do |type | %>
-  <p> <%= type[0] %>: <%= type[1] %></p>
+  <p><%= type[0] %>: <%= type[1] %></p>
     <% end %>
-  <p>Water: The tap water is <%= @response["water"]["short"]%> for consumption.</p>
-  <p>Currency: <%= @response["currency"]["name"] %> <%= @response["currency"]["rate"] %> to USD</p>
+  <% if @response["water"]["short"] == "safe" %>
+  <p><b>Water:</b> The tap water is <%= @response["water"]["short"]%> for consumption.</p>
+  <% else %>
+  <p><b>Water:</b> The tap water is not safe for consumption. Please drink from bottled water.</p>
+
+  <% end %>
+  <p><b>Currency:</b> <%= @response["currency"]["name"] %> <%= @response["currency"]["rate"] %> to USD</p>
   <p>
-    Vaccination:
+    <b>Vaccination:</b>
     <% if @response["vaccinations"] == [] %>
       <p>This country doesn't require any vaccination</p>
     <% else %>
-      <%= @response["vaccinations"] %>
+      <% @response["vaccinations"].each do |name| %>
+      <p><%= name["name"] %>: <%=name["message"] %> </p>
+      <% end %>
     <% end %>
   </p>
 

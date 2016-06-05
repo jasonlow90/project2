@@ -32,21 +32,18 @@
       <% end %>
 
     </div>
-
+  </div>
 
   <div id="my-destination">
     <h3>My Destinations</h3>
+    <ul>
+    </ul>
     <% current_user.destinations.each do |x|%>
-    <p><%= link_to "#{x.country}", {:controller => "destinations", :action => "show", :name => x.country }%></p>
-    <form action="/destinations/show" method= "GET">
-      <input type="text" name="searchterm" value=<%= x.country %>>
-      <button type="submit">Click Me</button>
-    </form>
+      <li><%= link_to "#{x.country}", {:controller => "destinations", :action => "show", :name => x.country }%></li><br/>
     <% end %>
     <hr>
   <% end %>
 <%= yield %>
-
 
 </div>
 </body>

@@ -4,6 +4,8 @@ body {
   padding: none;
   background-image: url(https://assaadmouawad.files.wordpress.com/2011/06/world_traveler2.jpg);
   font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  text-decoration: none;
 }
 
 
@@ -15,7 +17,7 @@ body {
   padding: 10px;
   margin: 0;
   text-align: center;
-  background-image: url();
+  background-image: none;
 }
 
 .profile > h3 {
@@ -34,9 +36,14 @@ body {
   position: absolute;
   right: 10px;
 }
+
 .profile-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
+}
+
+#message-board{
+  background-color: white;
 }
