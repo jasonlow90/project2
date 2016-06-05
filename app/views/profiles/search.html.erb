@@ -5,6 +5,7 @@
   <p>Languages: <%= @response["language"][0]["language"] %></p>
   <p>Voltage: <%= @response["electricity"]["voltage"] %> Volt</p>
   <p>Frequency: <%= @response["electricity"]["frequency"] %> Hz</p>
+  <p>Temperature: June: <%= @response["weather"]["June"]["tAvg"] %></p>
   <p>Emergency contacts:</p>
     <% @response["telephone"].each do |type | %>
   <p> <%= type[0] %>: <%= type[1] %></p>

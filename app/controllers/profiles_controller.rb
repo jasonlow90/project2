@@ -48,7 +48,7 @@ class ProfilesController < ApplicationController
     # Delete user's profile
     def destroy
       current_user.profile.delete
-      flash[:message] = "Wizard successfully delete"
+      flash[:message] = "Profile successfully delete"
       redirect_to '/profiles'
     end
 

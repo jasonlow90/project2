@@ -13,7 +13,9 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    
+    message = Message.find_by_id(params[:name])
+    message.delete
+    redirect_to '/profiles'
   end
 
   def update

@@ -5,6 +5,7 @@
   <p>Languages: <%= @response["language"][0]["language"] %></p>
   <p>Voltage: <%= @response["electricity"]["voltage"] %> Volt</p>
   <p>Frequency: <%= @response["electricity"]["frequency"] %> Hz</p>
+  <p>Temperature: June: <%= @response["weather"]["June"]["tAvg"] %></p>
   <p>Emergency contacts:</p>
     <% @response["telephone"].each do |type | %>
   <p> <%= type[0] %>: <%= type[1] %></p>
@@ -30,7 +31,7 @@
         <td><%= x.content %>- posted by: <%= x.user.name%></td>
         <% if x.user.id == current_user.id %>
           <td><%= link_to 'Edit', { :controller => "messages", :action => "edit", :name => x } %> </td>
-          <td><%= link_to 'Delete', messages_destroy_path %></td>
+          <td><%= link_to 'Delete', {:controller => "messages", :action => "destroy", :name => x}, method: :delete, data: { confirm: "Are you sure?"}%></td>
         <% end %>
       </p>
     <% end %>
