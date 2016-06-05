@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   # Message routes
   post 'messages/create' => 'messages#create'
-  patch 'messages/edit' => 'messages#edit'
+  get 'messages/edit' => 'messages#edit'
+  patch 'messages/update' => 'messages#update'
   delete 'messages/destroy' => 'messages#destroy'
 
   # Destination routes

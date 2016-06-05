@@ -1,2 +1,9 @@
-<h1>Messages#edit</h1>
-<p>Find me in app/views/messages/edit.html.erb</p>
+<h1>Editing Post</h1>
+
+<%= form_for Message.find_by_id(params[:name]), url: '/messages/update', :method => :patch do |f| %>
+
+  Content: <%= f.text_field :content %>
+  <%= f.hidden_field :id %>
+  <%= f.submit "Edit" %>
+
+<% end %>

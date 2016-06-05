@@ -29,7 +29,7 @@
       <p>
         <td><%= x.content %>- posted by: <%= x.user.name%></td>
         <% if x.user.id == current_user.id %>
-          <td><%= link_to 'Edit', messages_edit_path %> </td>
+          <td><%= link_to 'Edit', { :controller => "messages", :action => "edit", :name => x } %> </td>
           <td><%= link_to 'Delete', messages_destroy_path %></td>
         <% end %>
       </p>
