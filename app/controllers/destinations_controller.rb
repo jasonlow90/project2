@@ -20,12 +20,12 @@ class DestinationsController < ApplicationController
   end
 
   def show
-    @response = HTTParty.get("https://travelbriefing.org/#{params[:searchterm]}?format=json",
+    @response = HTTParty.get("https://travelbriefing.org/#{params[:name]}?format=json",
       :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'})
 
     @response = JSON.parse(@response.parsed_response)
 
-    @dest = Destination.where(country: params[:searchterm], user_id: current_user.id)[0]
+    @dest = Destination.where(country: params[:name], user_id: current_user.id)[0]
     # @dest_test = Destination.find_by_country(params[:searchterm])
     #
     # if @dest_test.user.id == current_user.id

@@ -5,29 +5,42 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
 
   <% if current_user && current_user.profile %>
-  <div class="user-profile">
-    <h3>Profile: </h3>
-    <p>Name: <%= current_user.profile.name%></p>
-    <p>Countries visited: <%= current_user.profile.countries_visited %></p>
-    <p>Favourite countries: <%= current_user.profile.favourite_countries %></p>
-    <p>Bucket list: <%= current_user.profile.bucket_list %></p>
-    <p>Looking for travel buddy? <%=current_user.profile.travel_buddy %></p>
-  <%= button_to "Edit Profile", {:controller => "profiles", :action => "edit"}, method: :get %>
-  <%= button_to "Delete My Profile", {:controller => "profiles", :action => "destroy"}, method: :delete, data: { confirm: "Are you sure?"}%>
-  <%= button_to "Log Out", {:controller => 'sessions', :action => 'destroy'}, method: :get %>
+  <div class="profile">
+    <img src="http://girlygeek.ph/wp-content/uploads/2014/09/Travel_Buddy_logo_latest_new.png" alt="" />
+    <h3> My Profile </h3>
+    <div class="profile-buttons">
+      <%= button_to "Edit Profile", {:controller => "profiles", :action => "edit"}, method: :get %>
+      <%= button_to "Delete My Profile", {:controller => "profiles", :action => "destroy"}, method: :delete, data: { confirm: "Are you sure?"}%>
+      <%= button_to "Log Out", {:controller => 'sessions', :action => 'destroy'}, method: :get %>
+    </div>
+    <div class="profile-info">
+      <p>Name: <%= current_user.profile.name%></p>
+      <p>Countries visited: <%= current_user.profile.countries_visited %></p>
+      <p>Favourite countries: <%= current_user.profile.favourite_countries %></p>
+      <p>Bucket list: <%= current_user.profile.bucket_list %></p>
+      <% if current_user.profile.travel_buddy %>
+      <p>Looking for travel buddy!</p>
+      <% else %>
+      <p> Not looking for a travel buddy! </p>
+      <% end %>
 
-  </div>
+    </div>
 
-  <div class="my-destination">
+
+  <div id="my-destination">
     <h3>My Destinations</h3>
     <% current_user.destinations.each do |x|%>
+    <p><%= link_to "#{x.country}", {:controller => "destinations", :action => "show", :name => x.country }%></p>
     <form action="/destinations/show" method= "GET">
       <input type="text" name="searchterm" value=<%= x.country %>>
-      <button type="submit">Enter Me</button>
+      <button type="submit">Click Me</button>
     </form>
     <% end %>
     <hr>
@@ -35,5 +48,6 @@
 <%= yield %>
 
 
+</div>
 </body>
 </html>
