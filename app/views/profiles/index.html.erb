@@ -12,7 +12,7 @@
   <h3>Travel buddies board</h3>
   <% @destinations.each do |x|%>
   <% if x.user.profile.travel_buddy == true%>
-    <p><%= link_to "#{x.country}", controller: "destinations", action: "view"%> by <%= x.user.name.capitalize %> </p>
+    <p><%= link_to "#{x.country}", {:controller => "destinations", :action => "view", :name => {:country => x.country, :userid => x.user.id}} %> by <%= x.user.name.capitalize %> </p>
     <% end %>
   <% end %>
 </div>

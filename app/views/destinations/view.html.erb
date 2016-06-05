@@ -24,15 +24,14 @@
 
 <div class="message-board">
   <h3>Message Board:</h3>
-  <% if @dest.user.id == current_user.id %>
   <% @message.each do |x| %>
     <% if x.destination.id == @dest.id%>
       <p><%= x.destination.id %></p>
       <p><%= x.content %>- posted by: <%= x.user.name%></p>
     <% end %>
   <% end %>
-  <% end %>
   <%= @dest.id %>
+  <%= @dest.user.name %>
 
   </div>
   <div class="create-post">
