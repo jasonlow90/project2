@@ -26,11 +26,15 @@
   <h3>Message Board:</h3>
   <% @message.each do |x| %>
     <% if x.destination.id == @dest.id%>
-      <p><%= x.destination.id %></p>
-      <p><%= x.content %>- posted by: <%= x.user.name%></p>
+      <p>
+        <td><%= x.content %>- posted by: <%= x.user.name%></td>
+        <% if x.user.id == current_user.id %>
+          <td><%= link_to 'Edit', messages_edit_path %> </td>
+          <td><%= link_to 'Delete', messages_destroy_path %></td>
+        <% end %>
+      </p>
     <% end %>
   <% end %>
-  <%= @dest.id %>
   <%= @dest.user.name %>
 
   </div>

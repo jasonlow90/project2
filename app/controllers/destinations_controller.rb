@@ -37,6 +37,7 @@ class DestinationsController < ApplicationController
 
   end
 
+  # Public destination
   def view
     @response = HTTParty.get("https://travelbriefing.org/#{params[:name][:country]}?format=json",
       :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'})

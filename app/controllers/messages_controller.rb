@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
     dest = Destination.find_by_country(params[:country])
     message.destination = dest
     message.save
-    redirect_to "/destinations/show?searchterm=#{params[:country]}"
+    redirect_to :back
   end
 
   def edit
@@ -14,4 +14,5 @@ class MessagesController < ApplicationController
 
   def destroy
   end
+
 end
