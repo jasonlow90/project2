@@ -1,6 +1,8 @@
 ## Travel buddy Web App
 
 ### Web App Guide
+Want to travel around the world yet afraid to do it alone? This web app allows you look for travel buddies and get information of any countries.
+
 #### Create an account & profile
 1. Create an account using your email and setting up a password for it.
 2. Build your profile. If you are looking for a travel buddy, tick the looking for buddy box in the your profile.
