@@ -35,6 +35,9 @@ class DestinationsController < ApplicationController
     @message = Message.all
     @destination = Destination.all
 
+    @currency = @response["currency"]["rate"].to_f/@response["currency"]["compare"][5]["rate"].to_f
+
+    gon.currency = @currency
   end
 
   # Public destination
@@ -53,6 +56,10 @@ class DestinationsController < ApplicationController
 
     @message = Message.all
     @destination = Destination.all
+
+    @currency = @response["currency"]["rate"].to_f/@response["currency"]["compare"][5]["rate"].to_f
+
+    gon.currency = @currency
   end
 
 end

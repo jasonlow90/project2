@@ -2,7 +2,6 @@
 body {
   margin: 0;
   padding: none;
-  background-image: url(https://assaadmouawad.files.wordpress.com/2011/06/world_traveler2.jpg);
   font-family: 'Open Sans', sans-serif;
   text-align: center;
   text-decoration: none;
@@ -10,6 +9,13 @@ body {
 
 
 /*Layout*/
+
+#my-destination {
+
+  background-image: url(https://assaadmouawad.files.wordpress.com/2011/06/world_traveler2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .profile {
   border-style: solid;
   border-color: grey;
@@ -45,5 +51,9 @@ body {
 }
 
 #message-board{
+  background-color: white;
+}
+
+#line-chart {
   background-color: white;
 }

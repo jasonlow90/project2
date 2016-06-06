@@ -43,6 +43,9 @@ class ProfilesController < ApplicationController
         :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'})
 
       @response = JSON.parse(@response.parsed_response)
+      @currency = @response["currency"]["rate"].to_f/@response["currency"]["compare"][5]["rate"].to_f
+
+      gon.currency = @currency
     end
 
     # Delete user's profile

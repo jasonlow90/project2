@@ -1,1 +1,15 @@
 <p>Travel Advise: <%= @response["advise"]["UA"]["advise"] %>. Please visit <a href="<%= @response["advise"]["UA"]["url"] %>">here</a> for more information.</p>
+
+<% months = {:January => , :February => , :March => , :April => , :May => , :June => , :July => , :August => , :September => , :November => , :December => } %>
+
+<% months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "November", "December"] %>
+<% tavg = [] %>
+<% storage = {} %>
+<% @response["weather"].each do |month| %>
+<% tavg << month[1]["tAvg"] %>
+<% end %>
+<% months.each do |month| %>
+<% tavg. each do |t| %>
+<% storage[month] << t %>
+<% end %>
+<% end %>

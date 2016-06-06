@@ -12,5 +12,24 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+// require turbolinks
 //= require_tree .
+//= require Chart.bundle
+//= require chartkick
+
+$(document).ready(function () {
+  var conversionOne = $('#conversionOne');
+  var conversion = $('#conversion');
+
+
+  $('#conversion').keyup(function() {
+    console.log('Hello');
+    console.log(gon.currency);
+    console.log($('#conversion').val())
+    $('#conversionOne').val((parseFloat(gon.currency * parseFloat($('#conversion').val()))));
+    if (!conversionOne.val()){
+      conversionOne.val(0);
+    }
+  })
+
+})

@@ -5,6 +5,16 @@
   <p><b>Languages:</b> <%= @response["language"][0]["language"] %></p>
   <p><b>Voltage:</b> <%= @response["electricity"]["voltage"] %> Volt</p>
   <p><b>Frequency:</b> <%= @response["electricity"]["frequency"] %> Hz</p>
+
+  <% months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "November", "December"] %>
+  <% tavg = [] %>
+  <% @response["weather"].each do |month| %>
+  <% tavg << month[1]["tAvg"].to_f %>
+  <% end %>
+
+
+  <%= line_chart({"January" => tavg[0], "February" => tavg[1], "March" => tavg[2], "April" => tavg[3], "May" => tavg[4], "June" => tavg[5], "July" => tavg[6], "August" => tavg[7], "September" => tavg[8], "October" => tavg[9], "November" => tavg[10], "December" => tavg[11]}) %>
+
   <p><b>Average Temperature in June:</b> <%= @response["weather"]["June"]["tAvg"] %> degree Celsius</p>
   <p><b>Emergency contacts:</b></p>
     <% @response["telephone"].each do |type | %>
@@ -16,7 +26,9 @@
   <p><b>Water:</b> The tap water is not safe for consumption. Please drink from bottled water.</p>
 
   <% end %>
-  <p><b>Currency:</b> <%= @response["currency"]["name"] %> <%= @response["currency"]["rate"] %> to USD</p>
+
+  <p><b>Currency:</b> <%= @response["currency"]["name"] %> <input id="conversionOne" value = <%=@currency %> ></input>
+    to <input id="conversion" value = 1> AUD </input></p>
   <p>
     <b>Vaccination:</b>
     <% if @response["vaccinations"] == [] %>

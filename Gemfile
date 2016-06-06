@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'gon' 
+
+gem 'chartkick'
 # gem for postgresql
 gem 'pg'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
