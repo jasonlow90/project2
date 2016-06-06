@@ -2,6 +2,7 @@ class DestinationsController < ApplicationController
   def home
   end
 
+  ## To save a searched destination under the user
   def create
     @response = HTTParty.get("https://travelbriefing.org/#{params[:name]}?format=json",
       :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'})
@@ -11,14 +12,11 @@ class DestinationsController < ApplicationController
     destination = Destination.new
     destination.country = @response["names"]["name"]
     destination.user = current_user
-    # if current_user.destinations.country == destination.country
-    #   flash[:error] = "Destination exist"
-    # else
-      destination.save
-    # end
+    destination.save
     redirect_to '/profiles'
   end
 
+  ## To show
   def show
     @response = HTTParty.get("https://travelbriefing.org/#{params[:name]}?format=json",
       :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'})
@@ -26,11 +24,6 @@ class DestinationsController < ApplicationController
     @response = JSON.parse(@response.parsed_response)
 
     @dest = Destination.where(country: params[:name], user_id: current_user.id)[0]
-    # @dest_test = Destination.find_by_country(params[:searchterm])
-    #
-    # if @dest_test.user.id == current_user.id
-    #   @dest = @dest_test
-    # end
 
     @message = Message.all
     @destination = Destination.all
@@ -40,7 +33,7 @@ class DestinationsController < ApplicationController
     gon.currency = @currency
   end
 
-  # Public destination
+  # To access other user's saved destination
   def view
     @response = HTTParty.get("https://travelbriefing.org/#{params[:name][:country]}?format=json",
       :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'})
@@ -48,11 +41,6 @@ class DestinationsController < ApplicationController
     @response = JSON.parse(@response.parsed_response)
 
     @dest = Destination.where(country: params[:name][:country], user_id: params[:name][:userid])[0]
-    # @dest_test = Destination.find_by_country(params[:name])
-    #
-    # if @dest_test.user.id == current_user.id
-    #   @dest = @dest_test
-    # end
 
     @message = Message.all
     @destination = Destination.all

@@ -11,7 +11,7 @@
 #### Finding a travel buddy
 1. You will be able to look at saved destination of users that are looking for a travel buddy in the travel buddy board.
 2. Click on their saved destination and leave a message in their message board!
- 
+
 ### Task
 Build a web app application that can create, read, update and delete data in SQL database which also interacts with any API
 
@@ -25,6 +25,14 @@ Build a web app application that can create, read, update and delete data in SQL
 - Properly manage packages using gems
 - Have semantically clean HTML and CSS
 - Be deployed to the public (default: Heroku)
+
+### Technologies user
+- Ruby, Ruby on Rails
+- Jquery
+- HTML, CSS
+- travelbrief.org's API
+- Ruby gem: httparty, bcrypt, chartkick, gon
+
 
 ### Limitation
 1. Limited amount of informations and they are not fully accurate.
