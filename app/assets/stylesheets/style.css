@@ -1,20 +1,27 @@
 /*Normalise*/
+html {
+  height: 100%;
+}
 body {
   margin: 0;
   padding: none;
   font-family: 'Open Sans', sans-serif;
   text-align: center;
   text-decoration: none;
+  min-height: 100%;
+
 }
 
 
 /*Layout*/
 
 #my-destination {
-
   background-image: url(https://assaadmouawad.files.wordpress.com/2011/06/world_traveler2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  min-height: 800px;
+  position: relative;
+  top: -20px;
 }
 .profile {
   border-style: solid;
@@ -23,7 +30,7 @@ body {
   padding: 10px;
   margin: 0;
   text-align: center;
-  background-image: none;
+  background-color: white;
 }
 
 .profile > h3 {
